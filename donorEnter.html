@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <base target="_top">
+  </head>
+  <br>
+
+    <form action ="form_action.asp">
+  
+    <font size = '5'>What is the donors name?</font>
+    <br>
+    <input type = "text" style = "height:20px;font-size:14pt" name ="donorName">
+    <br>
+    <br>
+  
+    <font size = '5'> What is the donors address? </font>
+    <br>
+    <input type = "text" style = "height:20px;font-size:14pt" name = "donorAddress">
+    <br>
+    <br>
+    <br>
+       
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/cupertino/jquery-ui.css">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    
+    <font size = '5'>What is the primary phone number for this donor?</font>
+    <br>
+    <input type = "tel" style = "height:20px;font-size:14pt" name="donorPhone">
+    <br>
+    <br>
+    
+    <font size = '5'>What is the primary email address for this donor?</font>
+    <br>
+    <input type = "email" style = "height:20px;font-size:14pt" name = "donorEmail">
+    <br>
+    <br>
+    <br>
+    
+    
+    <font size = '5'>Who is the primary contact for this donor?</font>
+    <br>
+    <input type = "text" style = "height:20px;font-size:14pt" name="donorContact">
+    <br>
+    <br>
+    
+    <font size = '5'>What is this contacts position? (e.g. owner, managers etc.)</font>
+    <br>
+    <input type = "text" style = "height:20px;font-size:14pt" name="donorContactPosition">
+    <br>
+    <br>
+    
+   
+    <br>
+    <br>
+  
+       <input type="button" value="Submit"
+          onclick="google.script.run
+              .withSuccessHandler(google.script.host.close)
+              .addToDonorSheet(this.parentNode)" />
+              
+
+</form>
+</html>
