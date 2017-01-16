@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <br>
+<body>
+
+
+
+  <form action ="form_action.asp">
+  
+  What item are you closing?
+  <br>
+  <select id="itemNumbers" name ="itemNumber"> </select>
+  <br>
+  <br>
+  
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/cupertino/jquery-ui.css">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+   
+    What was the final bid for this item?
+    <br>
+    <input type = "text" name="itemFinalBid">
+    <br>
+    <br>
+    
+    How many bids were made for this item?
+    <br>
+    <input type = "text" name="itemNumBids">
+    <br>
+    <br>
+    
+    Has the winner received their item yet?
+    <input type = "radio" name = "itemDelivered" value = "Yes"> Yes
+    <input type = "radio" name = "itemDelivered" value = "No" checked> No
+   
+       
+   <script>
+   
+   google.script.run.withSuccessHandler(openItems)
+     .getOpenItemNumber();
+     
+     function openItems(openItems) {
+     var list = $('#itemNumbers');
+     
+     for (var i = 0; i < openItems.length; i++) {
+       list.append('<option>' + openItems[i] + '</option>');
+       }
+     }
+     
+   </script>
+   
+   <br>
+   <br>
+  
+       <input type="button" value="Submit"
+          onclick="google.script.run
+              .closeItems(this.parentNode)" />
+                       
+</form>
+</body>
+
+</html>
