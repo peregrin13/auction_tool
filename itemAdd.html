@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <br>
+
+  <form action ="form_action.asp">
+  
+  What auction is this item for?
+  <br>
+  <select id="auction" name ="itemAuction"> </select>
+  <br>
+  <br>
+  
+  What type of item is this?:
+  <br>
+    <select id="type" name = "itemTypes">
+    <br>
+      
+    </select> <br>
+    <br>
+       
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/cupertino/jquery-ui.css">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+   
+    Who solicited this item?
+    <br>
+    <input type = "text" name="itemSolicitor">
+    <br>
+    <br>
+    
+    What is this items name?
+    <br>
+    <input type = "text" name="itemName">
+    <br>
+    <br>
+    
+    Who donated this item?:
+    <br>
+    <select id="donor" name = "itemDonor">
+    <br>
+      
+    </select> <br>
+    <br>
+    
+    Provide a brief description of the item:<br>
+    <textarea name="itemDescription" cols="20" rows="4"></textarea>
+    <br>
+    <br>
+    
+    How much is the item worth?
+    <br>
+    <input type = "text" name="itemValue">
+    <br>
+    <br>
+    
+    What should the starting bid be for this item?
+    <br>
+    <input type = "text" name="itemStartBid">
+    <br>
+    <br>
+    
+    What is the bid increment for this item?
+    <br>
+    <input type = "text" name="itemBidIncrement">
+    <br>
+    <br>
+    
+    Has this item been collected yet?
+    <input type = "radio" name = "itemCollected" value = "Yes"> Yes
+    <input type = "radio" name = "itemCollected" value = "No" checked> No
+    
+    
+    <script>
+    
+    // The code in this function runs when the page is loaded.
+             
+      google.script.run.withSuccessHandler(itemTypeList)
+        .getItemTypes();
+    
+    
+    function itemTypeList(itemTypes) {
+      var list = $('#type');
+      
+      for (var i = 0; i < itemTypes.length; i++) {
+        list.append('<option>' + itemTypes[i] + '</option>');
+      }
+    }
+    
+       </script>
+       
+   <script>
+   
+   google.script.run.withSuccessHandler(auctionList)
+     .getAuctions();
+     
+     function auctionList(auctions) {
+     var list = $('#auction');
+     
+     for (var i = 0; i < auctions.length; i++) {
+       list.append('<option>' + auctions[i] + '</option>');
+       }
+     }
+     
+   </script>
+   
+      <script>
+   
+   google.script.run.withSuccessHandler(donorList)
+     .getDonors();
+     
+     function donorList(donors) {
+     var list = $('#donor');
+     
+     for (var i = 0; i < donors.length; i++) {
+       list.append('<option>' + donors[i] + '</option>');
+       }
+     }
+     
+   </script>
+   
+   <br>
+   <br>
+  
+       <input type="button" value="Submit"
+          onclick="google.script.run
+              .withSuccessHandler(google.script.host.close)
+              .addToItemSheet(this.parentNode)" />
+              
+</form>
+
+</html>
